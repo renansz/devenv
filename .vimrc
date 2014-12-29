@@ -2,6 +2,9 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+" ===========IMPORTANT=============
+" Must put colorschemes on /usr/share/vim/vimXX/colors/
+" ================================
 " TODO: this may not be in the correct place. It is intended to allow overriding <Leader>.
 " source ~/.vimrc.before if it exists.
 if filereadable(expand("~/.vimrc.before"))
@@ -18,6 +21,19 @@ set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
+set mouse=a                     "enable mouse
+set mousehide                   "hide when characters are typed
+colorscheme jellybeans          "dotvim theme"
+
+
+set ttyfast                     "assume fast terminal connection
+set viewoptions=folds,options,cursor,unix,slash     "unix/windows compatibility
+set encoding=utf-8              "set encoding for text
+if exists('$TMUX')
+  set clipboard=
+else
+  set clipboard=unnamed         "sync with OS clipboard
+endif
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -41,7 +57,6 @@ if filereadable(expand("~/.vim/vundles.vim"))
 endif
 
 " ================ Turn Off Swap Files ==============
-
 set noswapfile
 set nobackup
 set nowb
@@ -56,27 +71,29 @@ if has('persistent_undo')
 endif
 
 " ================ Indentation ======================
-
-set autoindent
+set autoindent          "makes copy n paste fails =/
 set smartindent
 set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 set expandtab
 
+" ================ Special marks  ======================
 filetype plugin on
 filetype indent on
 
 " Display tabs and trailing spaces visually
-set list listchars=tab:\ \ ,trail:·
+set list listchars=tab:│\ ,trail:·,extends:❯,precedes:❮
 
 set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
+set shiftround
+let &showbreak='↪ '
 
 " ================ Folds ============================
 
-set foldmethod=indent   "fold based on indent
+set foldmethod=indent   "fold based on indent -- works good in Python
 set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
 
@@ -97,11 +114,31 @@ set wildignore+=*.png,*.jpg,*.gif
 
 "
 " ================ Scrolling ========================
-
 set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
+" ================ Programming helpers =====================
+set showmatch            "automatically highlight matching braces/brackets/etc.
+set matchtime=2          "tens of a second to show matching parentheses
+set number
+set lazyredraw
+set laststatus=2
 
+
+"================= Searching =================
+map <Space> :let @/ = "" "clear the search
+set hlsearch             "highlight searches
+set incsearch            "incremental searching
+set ignorecase           "ignore case for searching
+set smartcase            "do case-sensitive if there's a capital letter
+if executable('ack')
+  set grepprg=ack\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow\ $*
+  set grepformat=%f:%l:%c:%m
+endif
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
+  set grepformat=%f:%l:%c:%m
+endif
 " ================ Custom Settings ========================
-so ~/devenv/settings.vim
+"so ~/devenv/settings.vim
