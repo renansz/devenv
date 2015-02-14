@@ -4,17 +4,19 @@
 #so you can remove the ones you don't want to create
 
 #vim
-ln -s ~/.vimrc .vimrc
-ln -s ~/.vim .vim
-ln -s /usr/share/vim/vim??/colors/ jellybean.vim
+ln -s `pwd`/.vimrc $HOME/.vimrc
+cp `pwd`/jellybeans.vim /usr/share/vim/vim??/colors/
 
 #bash
-ln -s ~/.bashrc .bashrc
+ln -s `pwd`/.bashrc $HOME/.bashrc 
 
 #screen
-ln -s ~/.screenrc .screenrc
+ln -s `pwd`/.screenrc $HOME/.screenrc 
 
 #emacs
-ln -s ~/.emacs .emacs
+ln -s `pwd`/.emacs $HOME/.emacs 
 
 
+#(OPTIONAL) -- programs instalation
+aptitude update
+aptitude install vim screen #put emacs if will
