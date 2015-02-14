@@ -25,7 +25,7 @@ crlf                  off             # default: off
 hardcopy_append       on              # default: off
 startup_message       off             # default: on
 vbell                 off             # default: ???
-escape	"^Tt"                         # ctrl-A default interferes with emacs keybindings for terminal
+escape	"^Tt"                         # ctrl-A default interferes with bash keybindings for terminal
 defutf8 on                            # unicode by default
 defscrollback         10000           # default: 100
 silencewait           15              # default: 30
@@ -86,9 +86,10 @@ sorendition "+b kG"
 # 2.2) hardstatus = navigation bar @ bottom
 hardstatus alwayslastline "%H %-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"  
 
-# 2.3) Autoload two screen tabs for emacs/bash.
-screen -t emacs 0
-screen -t bash 1
+# 2.3) Autoload three screen tabs for vim/bash/python.
+screen -t bash 0
+screen -t vim 1
+screen -t python 2
 
 # 2.4) Description of the keywords used in hardstatus
 # caption always "%?%F%{-b bc}%:%{-b bb}%?%C|%D|%M %d|%H%?%F%{+u wb}%? %L=%-Lw%45>%{+b by}%n%f* %t%{-}%+Lw%-0<"
