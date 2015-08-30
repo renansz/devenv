@@ -7,7 +7,7 @@ set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
-"colorscheme jellybeans          "dotvim theme"
+colorscheme ron                 "dotvim theme
 
 "set ttyfast                     "assume fast terminal connection
 set viewoptions=folds,options,cursor,unix,slash     "unix/windows compatibility
