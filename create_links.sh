@@ -4,7 +4,7 @@
 #so you can remove the ones you don't want to create
 
 #vim
-ln -s `pwd`/.vimrc $HOME/.vimrc
+ln -s `pwd`/.vimrc_simple $HOME/.vimrc
 cp `pwd`/jellybeans.vim /usr/share/vim/vim??/colors/
 
 #bash
@@ -18,5 +18,5 @@ ln -s `pwd`/.emacs $HOME/.emacs
 
 
 #(OPTIONAL) -- programs instalation
-aptitude update
-aptitude install vim screen #put emacs if will
+#aptitude update
+#aptitude install vim screen #put emacs if will

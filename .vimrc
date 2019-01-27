@@ -23,7 +23,7 @@ set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set mouse=a                     "enable mouse
 set mousehide                   "hide when characters are typed
-colorscheme jellybeans          "dotvim theme"
+colorscheme ron          "dotvim theme"
 
 
 set ttyfast                     "assume fast terminal connection
