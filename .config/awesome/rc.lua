@@ -45,7 +45,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("/home/renansz/.config/awesome/theme.lua")
-beautiful.get().wallpaper = "/home/renansz/Documents/debian_wallpaper.jpg"
+beautiful.get().wallpaper = "/home/renansz/Downloads/debian_dark.jpg"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
@@ -221,7 +221,7 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            -- require("battery-widget"){ adapter ="BAT0" },
+            require("battery-widget"){ adapter ="BAT0" },
             mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
@@ -451,6 +451,7 @@ root.keys(globalkeys)
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
+-- Fix terminal window not fully maximizing
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
@@ -461,7 +462,8 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
+                     placement = awful.placement.no_overlap+awful.placement.no_offscreen,
+                     size_hints_honor = false
      }
     },
 
@@ -574,7 +576,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Autorun programs in Awesome (apelando) -- nao funcionou
 autorun = true
 autorunApps = {
-    "owncloud",
+    --"owncloud",
     "xfce4-power-manager",
     "nm-applet",
     "/home/renansz/.config/awesome/autorun.sh",
