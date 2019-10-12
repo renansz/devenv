@@ -45,7 +45,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("/home/renansz/.config/awesome/theme.lua")
-beautiful.get().wallpaper = "/home/renansz/Downloads/debian_dark.jpg"
+beautiful.get().wallpaper = "debian_dark.jpg"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
