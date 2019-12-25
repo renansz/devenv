@@ -26,6 +26,8 @@ if awesome.startup_errors then
                      text = awesome.startup_errors })
 end
 
+naughty.config.defaults['icon_size'] = 32
+
 -- Handle runtime errors after startup
 do
     local in_error = false
@@ -45,7 +47,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("/home/renansz/.config/awesome/theme.lua")
-beautiful.get().wallpaper = "debian_dark.jpg"
+beautiful.get().wallpaper = "/home/renansz/.config/awesome/debian_dark.jpg"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
@@ -222,7 +224,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             require("battery-widget"){ adapter ="BAT0" },
-            mykeyboardlayout,
+            -- mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
@@ -341,6 +343,9 @@ globalkeys = gears.table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"}),
+    awful.key({}, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -D pulse sset Master 2%+", false) end),
+    awful.key({}, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -D pulse sset Master 2%-", false) end),
+    awful.key({}, "XF86AudioMute", function () awful.util.spawn("amixer -D pulse sset Master toggle", false) end),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
@@ -495,7 +500,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
+      }, properties = { titlebars_enabled = false }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.

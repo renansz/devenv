@@ -99,6 +99,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias ta='tmux attach -t'
 alias tn='tmux new -s'
+alias rsyncp='rsync -P -e "ssh"'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
