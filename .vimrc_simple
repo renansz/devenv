@@ -10,6 +10,7 @@ set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 colorscheme ron                 "dotvim theme
+"colorscheme catppuccin_mocha                 "dotvim theme
 
 "set ttyfast                     "assume fast terminal connection
 set viewoptions=folds,options,cursor,unix,slash     "unix/windows compatibility
@@ -96,6 +97,9 @@ set hlsearch             "highlight searches
 set incsearch            "incremental searching
 set ignorecase           "ignore case for searching
 set smartcase            "do case-sensitive if there's a capital letter
+
+set termguicolors
+
 if executable('ack')
   set grepprg=ack\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow\ $*
   set grepformat=%f:%l:%c:%m
